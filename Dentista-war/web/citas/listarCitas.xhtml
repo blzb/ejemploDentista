@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./../template.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+        <ui:define name="content">
+            <h:dataTable value="#{listaCitas.citas}" var="cita" class="table table-bordered">
+                <!-- Comentario-->
+                <h:column>
+                    <f:facet name="header">Dentista:</f:facet>
+                    #{cita.dentista.nombre}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Usuario:</f:facet>
+                    #{cita.usuario.nombre}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Fecha:</f:facet>
+                    #{cita.fechaCita}
+                </h:column>
+                
+            </h:dataTable>
+            <h:link value="Crear cita" outcome="/citas/asignarCita" />
+        </ui:define>
+
+
+</ui:composition>

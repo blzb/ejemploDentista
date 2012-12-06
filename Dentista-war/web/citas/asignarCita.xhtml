@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./../template.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="content">
+        <h:form>
+            <h:outputLabel for="dentista" value="Dentista:"/>
+            <h:selectOneMenu value="#{crearCita.idDentista}" id="dentista">
+                <f:selectItems value="#{listaDentistas.dentistas}" var="d"
+                               itemLabel="#{d.especialidad}" itemValue="#{d.id}" />
+            </h:selectOneMenu>
+            <h:outputLabel for="fecha" value="Fecha:"/>
+            <h:inputText value="#{crearCita.fecha}" id="fecha" required="true">
+                <f:convertDateTime type="both"  pattern="dd/MM/yyyy HH:mm"/>
+            </h:inputText>
+            <h:outputText value="Usuario:" for="usuario"/>
+            <h:selectOneMenu value="#{crearCita.idUsuario}" id="usuario">
+                <f:selectItems value="#{listaUsuario.usuarios}" var="u"
+                               itemLabel="#{u.nombre}" itemValue="#{u.id}" />
+            </h:selectOneMenu>
+            <h:commandButton action="#{crearCita.guardarCita()}" value="Guardar"/>
+    </h:form>
+    </ui:define>
+
+
+</ui:composition>
