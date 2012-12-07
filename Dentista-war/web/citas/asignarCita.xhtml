@@ -14,7 +14,7 @@
             </h:selectOneMenu>
             <h:outputLabel for="fecha" value="Fecha:"/>
             <h:inputText value="#{crearCita.fecha}" id="fecha" required="true">
-                <f:convertDateTime type="both"  pattern="dd/MM/yyyy HH:mm"/>
+                <f:convertDateTime type="both"  pattern="dd/MM/yyyy HH:mm" />
             </h:inputText>
             <h:outputText value="Usuario:" for="usuario"/>
             <h:selectOneMenu value="#{crearCita.idUsuario}" id="usuario">
