@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.jws.WebMethod;
+import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -19,6 +21,7 @@ import javax.persistence.PersistenceContext;
  * @author Angel
  */
 @Stateless
+@WebService
 public class CitaFacade implements CitaFacadeLocal {
     @PersistenceContext
     EntityManager em;
@@ -39,6 +42,7 @@ public class CitaFacade implements CitaFacadeLocal {
         em.persist(cita);
     }
     @Override
+    @WebMethod
     public List<Cita> listAll(){
         return em.createQuery("Select c from Cita c").getResultList();
     }

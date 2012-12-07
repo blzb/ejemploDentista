@@ -8,16 +8,21 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author Angel
  */
 @Entity
+@XmlRootElement
 public class Dentista implements Serializable {
     private static final long serialVersionUID = 1L;
     @Column
@@ -32,10 +37,9 @@ public class Dentista implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    @OneToMany(mappedBy="dentista")
+    @OneToMany(mappedBy="dentista", fetch= FetchType.EAGER)
     private List<Cita> citasAgendadas;
-
+    @XmlTransient
     public List<Cita> getCitasAgendadas() {
         return citasAgendadas;
     }

@@ -15,21 +15,24 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author Angel
  */
 @Entity
+@XmlRootElement
 public class Cita implements Serializable {
     private static final long serialVersionUID = 1L;
     @Column
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date fechaCita;
-    @OneToOne
+    @OneToOne    
     @JoinColumn(name="ID_DENTISTA")
     private Dentista dentista;
-    @OneToOne
+    @OneToOne    
     @JoinColumn(name="ID_USUARIO")
     private Usuario usuario;        
     @Id
